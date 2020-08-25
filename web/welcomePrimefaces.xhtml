@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+                    Boton de Comando
+                    <h:form> <font></font>
+                        <p:growl id="growl" life="2000" /><font></font>
+                        <font></font>
+                        <p:commandButton value="Ingresar" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" /><font></font>
+                        <font></font>
+                        <p:commandButton value="Borrar" id="nonAjax" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" /><font></font>
+                        <font></font>
+                        <p:commandButton value="Actualizar" id="withIcon" action="#{buttonView.buttonAction}" update="growl" style="margin-right:20px;" icon="pi pi-save" /><font></font>
+                        <font></font>
+                        <p:commandButton action="#{buttonView.buttonAction}" id="iconOnly" update="growl" style="margin-right:20px;" icon="pi pi-save" title="Icon Only" /><font></font>
+                        <font></font>
+                        <p:commandButton value="Cancelar" id="disabled" style="margin-right:20px;" disabled="true" />   <font></font>
+                    </h:form>
+                    <br></br>
+                    Gruñido Mensaje
+                    <h:form>   <font></font>
+                        <p:growl id="growl" showDetail="true" sticky="true" />  <font></font>
+                        <font></font>
+                        <p:panel header="Growl">  <font></font>
+                            <h:panelGrid columns="2" cellpadding="5">  <font></font>
+                                <p:outputLabel for="msg" value="Message:" />   <font></font>
+                                <p:inputText id="msg" value="#{growlView.message}" required="true" />  <font></font>
+                            </h:panelGrid>  <font></font>
+                            <font></font>
+                            <p:commandButton value="Save" action="#{growlView.saveMessage}" update="@form" /><font></font>
+                        </p:panel>     <font></font>
+                    </h:form>
+                    <br></br>
+                    Barra de Herramientas
+                    <h:form>     <font></font>
+                        <p:growl id="messages" showDetail="true" /><font></font>
+                        <font></font>
+                        <p:toolbar><font></font>
+                            <f:facet name="left"><font></font>
+                                <p:commandButton type="button" value="New" icon="pi pi-file" /><font></font>
+                                <font></font>
+                                <p:commandButton type="button" value="Open" icon="pi pi-folder-open" /><font></font>
+                                <font></font>
+                                <span class="ui-separator"><font></font>
+                                    <span class="ui-icon pi pi-ellipsis-v" /><font></font>
+                                </span><font></font>
+                                <font></font>
+                                <p:commandButton type="button" title="Save" icon="pi pi-save" /><font></font>
+                                <p:commandButton type="button" title="Delete" icon="pi pi-trash" /><font></font>
+                                <p:commandButton type="button" title="Print" icon="pi pi-print" /><font></font>
+                            </f:facet><font></font>
+                            <font></font>
+                            <f:facet name="right"><font></font>
+                                <p:menuButton value="Options"><font></font>
+                                    <p:menuitem value="Save" action="#{toolbarView.save}" update="messages" icon="pi pi-save" /><font></font>
+                                    <p:menuitem value="Update" action="#{toolbarView.update}" update="messages" icon="pi pi-refresh" /><font></font>
+                                    <p:menuitem value="Delete" action="#{toolbarView.delete}" ajax="false" icon="pi pi-times" /><font></font>
+                                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="pi pi-home" /><font></font>
+                                </p:menuButton><font></font>
+                            </f:facet><font></font>
+                            <font></font>
+                        </p:toolbar><font></font>
+                    </h:form>
+
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

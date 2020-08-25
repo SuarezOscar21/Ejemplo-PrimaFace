@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>login</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true"/>
+            <center>
+                <h1>Inicio de secion</h1>
+                <br></br><br></br><br></br><br></br>
+            </center>
+            
+            <span class="ui-float-label">
+                <p:inputText  id = "usuario" value = "#{login.usuario}" required = " true "/>
+                    <p:outputLabel for="@previous" value="Username"/>
+            </span>
+            <p>
+                <span class="ui-float-label">
+               <p:password id="contrasena" value="#{login.contrasena}" required ="verdad" ></p:password>
+                    <p:outputLabel for="@previous" value="Password"/>
+            </span>
+                
+            </p>  
+            <p:commandButton id= "btnAceptar" value= "Ingresar" action = "#{login.ingresar}" update="@form"/>
+        </h:form>
+
+    </h:body>
+</html>
+
+

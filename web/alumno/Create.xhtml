@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlumnoCreateDlg" widgetVar="AlumnoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAlumnoTitle}">
+            <h:form id="AlumnoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{alumnoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_idalumno}" for="idalumno" />
+                        <p:inputText id="idalumno" value="#{alumnoController.selected.idalumno}" title="#{bundle.CreateAlumnoTitle_idalumno}" required="true" requiredMessage="#{bundle.CreateAlumnoRequiredMessage_idalumno}"/>
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_alumno}" for="alumno" />
+                        <p:inputText id="alumno" value="#{alumnoController.selected.alumno}" title="#{bundle.CreateAlumnoTitle_alumno}" required="true" requiredMessage="#{bundle.CreateAlumnoRequiredMessage_alumno}"/>
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_carreraIdcarrera}" for="carreraIdcarrera" />
+                        <p:selectOneMenu id="carreraIdcarrera" value="#{alumnoController.selected.carreraIdcarrera}" required="true" requiredMessage="#{bundle.EditAlumnoRequiredMessage_carreraIdcarrera}">
+                            <f:selectItems value="#{carreraController.itemsAvailableSelectOne}"
+                                           var="carreraIdcarreraItem"
+                                           itemValue="#{carreraIdcarreraItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{alumnoController.create}" value="#{bundle.Save}" update="display,:AlumnoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AlumnoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AlumnoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
